@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Faheem - Bioengineering & Mathematics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-beige: #f5f1eb;
+            --secondary-beige: #e8ddd4;
+            --accent-brown: #8b7355;
+            --dark-brown: #5d4e37;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: rgba(139, 115, 85, 0.1);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--primary-beige);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 20px var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-brown);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-brown);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-beige) 0%, var(--secondary-beige) 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid var(--white);
+            box-shadow: 0 10px 30px var(--shadow);
+            background: var(--secondary-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent-brown);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-brown);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .cta-button:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-brown);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary-beige);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-brown);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--primary-beige);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--accent-brown);
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--accent-brown);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background: var(--accent-brown);
+            border: 4px solid var(--white);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--primary-beige);
+            position: relative;
+            border-radius: 10px;
+        }
+
+        /* Photography Section */
+        .photography {
+            background: var(--primary-beige);
+        }
+
+        .photo-slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            cursor: pointer;
+        }
+
+        .photo-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            background: var(--secondary-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent-brown);
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .slide-placeholder h3 {
+            font-size: 1.5rem;
+            color: var(--dark-brown);
+        }
+
+        .slide-placeholder p {
+            color: var(--text-light);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--white);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: var(--white);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        .photo-info-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .photo-settings {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .drive-input {
+            display: inline-block;
+            margin: 1rem;
+            padding: 1rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--accent-brown);
+            border-radius: 25px;
+            color: var(--dark-brown);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .drive-input:hover {
+            background: var(--accent-brown);
+            color: var(--white);
+        }
+
+        .gallery-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--accent-brown);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-link:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* Gallery Modal */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            overflow-y: auto;
+        }
+
+        .gallery-modal.active {
+            display: block;
+        }
+
+        .gallery-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .gallery-close {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            background: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item-placeholder {
+            width: 100%;
+            height: 250px;
+            background: var(--secondary-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-brown);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary-beige);
+            text-decoration: none;
+            color: var(--text-dark);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--accent-brown);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Mohammed Faheem</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#photography">Photography</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-image" onclick="document.getElementById('imageUpload').click()">
+                📷
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            </div>
+            <h1>Mohammed Faheem</h1>
+            <p>Bioengineering & Mathematics Student | Research Assistant | Computational Biology Enthusiast</p>
+            <a href="#about" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Hi! I'm Faheem, a Bioengineering and Mathematics sophomore at NYU Abu Dhabi, curious about computational biology and mathematics.</p>
+                    
+                    <p>One of my favourite hobbies is photography and capturing the vibrant life around Abu Dhabi. Photography is a another way to see patterns, composition, and beauty in the world around us.</p>
+                    
+                    <p>My journey in science began with a deep fascination for how things work at the most fundamental level. This curiosity has led me through exciting research experiences across three countries - from analyzing cortical dynamics in Cambridge to developing image processing pipelines in Prague.</p>
+                    
+                    <p>Currently, I'm exploring how machine learning can revolutionize our understanding of biophysical systems, combining my love for mathematics with cutting-edge computational techniques. What excites me most is how ML algorithms can automate image analysis in cellular studies, making discoveries that would be impossible with traditional methods alone.</p>
+                    
+                    <p> Another hobby of mine is football (it's my favorite way to unwind!), or exploring Dubai and Abu Dhabi through my lens. I love how both science and photography require patience, precision, and a good eye for detail.</p>
+                    
+                    <p><strong>Explore my work:</strong> <a href="https://github.com/Faheem107" target="_blank" style="color: var(--accent-brown);">github.com/Faheem107</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🔬</div>
+                    <h3>Microscopy</h3>
+                    <p>Advanced techniques for cellular and molecular imaging</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">💻</div>
+                    <h3>Computational Biology</h3>
+                    <p>Python, MATLAB, C++ for biological data analysis</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">📊</div>
+                    <h3>Image Analysis</h3>
+                    <p>ImageJ, Fiji, ilastik for biological image processing</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🧮</div>
+                    <h3>Mathematics</h3>
+                    <p>Mathematical modeling and olympiad-level problem solving</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">⚛️</div>
+                    <h3>Physics</h3>
+                    <p>Biophysics and soft matter physics applications</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Research Methods</h3>
+                    <p>Experimental design and data analysis in biophysics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Visiting Research Associate</h3>
+                        <h4>University of Cambridge</h4>
+                        <span>July 2025 - Present</span>
+                        <p>Analyzing resource competition theory leading to criticality in soft matter and cortical condensates using <em>C. elegans</em> oocytes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Research Intern</h3>
+                        <h4>Institute of Molecular Genetics, Czech Academy of Sciences</h4>
+                        <span>June 2025 - July 2025</span>
+                        <p>Developed image processing pipelines using Fiji and ilastik for protein dynamics analysis in actomyosin cortex activation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Research Assistant & Producer</h3>
+                        <h4>NYU Abu Dhabi & Labocine</h4>
+                        <span>October 2024 - Present</span>
+                        <p>Investigating dynamic instability of cortical condensates under Prof. Arjun Narayanan while producing scientific media content.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Lead Photographer</h3>
+                        <h4>The Gazelle, NYU Abu Dhabi</h4>
+                        <span>2025 - Present</span>
+                        <p>Lead photographer and design team member for NYUAD's independent student newspaper.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="photography" class="photography">
+        <div class="container">
+            <h2 class="section-title fade-in">Photography Portfolio</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light);">
+                Capturing moments and telling stories through my lens
+            </p>
+            
+            <div class="photo-slider-container fade-in" onclick="openGallery()">
+                <div class="photo-slider" id="photoSlider">
+                    <div class="slide">
+                        <div class="slide-placeholder">
+                            <span>📸</span>
+                            <h3>Your Photography</h3>
+                            <p>Connect your Google Drive to showcase your work</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">
+                            <span>🌅</span>
+                            <h3>Campus Life</h3>
+                            <p>Daily moments at NYU Abu Dhabi</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">
+                            <span>🏛️</span>
+                            <h3>Architecture</h3>
+                            <p>Architectural photography in the UAE</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-placeholder">
+                            <span>🔬</span>
+                            <h3>Scientific Photography</h3>
+                            <p>Microscopy and lab documentation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="slider-nav prev" onclick="event.stopPropagation(); changeSlide(-1)">❮</button>
+                <button class="slider-nav next" onclick="event.stopPropagation(); changeSlide(1)">❯</button>
+                
+                <div class="slider-controls">
+                    <span class="slider-dot active" onclick="event.stopPropagation(); currentSlide(1)"></span>
+                    <span class="slider-dot" onclick="event.stopPropagation(); currentSlide(2)"></span>
+                    <span class="slider-dot" onclick="event.stopPropagation(); currentSlide(3)"></span>
+                    <span class="slider-dot" onclick="event.stopPropagation(); currentSlide(4)"></span>
+                </div>
+                
+                <div class="photo-info-overlay">
+                    <p>Click to view full gallery</p>
+                </div>
+            </div>
+            
+            <div class="photo-settings">
+                <input type="text" id="driveLink" placeholder="Paste your Google Drive folder link here..." class="drive-input" style="width: 400px; display: block; margin: 1rem auto;">
+                <button onclick="connectDrive()" class="drive-input">Connect Google Drive</button>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="gallery-link" onclick="openGallery(); return false;">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="gallery-content">
+            <button class="gallery-close" onclick="closeGallery()">×</button>
+            <h2 style="color: white; text-align: center; margin-bottom: 2rem;">Photography Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">📸</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🌅</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🏛️</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🔬</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🎨</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🌃</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">🌿</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-item-placeholder">⚡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="fade-in">I'm always open to discussing research opportunities, collaborations, or just having a chat about science and photography.</p>
+            <div class="contact-links fade-in">
+                <a href="mailto:mj3398@nyu.edu" class="contact-link">
+                    📧 mj3398@nyu.edu
+                </a>
+                <a href="https://www.linkedin.com/in/mohammed-faheem-33bb49295/" target="_blank" class="contact-link">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/Faheem107" target="_blank" class="contact-link">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mohammed Faheem. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Profile image upload
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImage = document.querySelector('.profile-image');
+                    profileImage.style.backgroundImage = `url(${e.target.result})`;
+                    profileImage.style.backgroundSize = 'cover';
+                    profileImage.style.backgroundPosition = 'center';
+                    profileImage.innerHTML = '';
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Photography slider functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            const slider = document.getElementById('photoSlider');
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentSlideIndex = index;
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            showSlide(index - 1);
+        }
+
+        // Auto-slide functionality
+        setInterval(() => {
+            changeSlide(1);
+        }, 4000);
+
+        // Gallery modal functions
+        function openGallery() {
+            document.getElementById('galleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Google Drive connection
+        function connectDrive() {
+            const driveLink = document.getElementById('driveLink').value;
+            if (driveLink) {
+                alert('Google Drive connection feature will be implemented. For now, you can manually upload images to your GitHub repository and update the image sources in the code.');
+                // Here you would implement the actual Google Drive API integration
+                // This is a placeholder for the functionality
+            } else {
+                alert('Please enter a Google Drive folder link.');
+            }
+        }
+
+        // Photography upload function (keeping for individual uploads)
+        function addPhoto(element) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const placeholder = element.querySelector('.gallery-item-placeholder');
+                        if (placeholder) {
+                            placeholder.style.backgroundImage = `url(${e.target.result})`;
+                            placeholder.style.backgroundSize = 'cover';
+                            placeholder.style.backgroundPosition = 'center';
+                            placeholder.innerHTML = '';
+                        }
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            };
+            input.click();
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
