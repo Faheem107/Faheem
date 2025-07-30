@@ -630,10 +630,10 @@
 
     <section id="home" class="hero">
         <div class="container">
-            <div class="profile-image" onclick="document.getElementById('imageUpload').click()">
-                📷
-                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            <div class="profile-image" style="background-image: url('images/Faheem_Pic.jpeg'); background-size: cover; background-position: center;">
+
             </div>
+
             <h1>Mohammed Faheem</h1>
             <p>Bioengineering & Mathematics Student | Research Assistant | Computational Biology Enthusiast</p>
             <a href="#about" class="cta-button">Learn More</a>
@@ -748,13 +748,11 @@
             
             <div class="photo-slider-container fade-in" onclick="openGallery()">
                 <div class="photo-slider" id="photoSlider">
-                    <div class="slide">
-                        <div class="slide-placeholder">
-                            <span>📸</span>
-                            <h3>Your Photography</h3>
-                            <p>Connect your Google Drive to showcase your work</p>
-                        </div>
-                    </div>
+                    <div class="slide"><img src="photos/photo9.jpg" alt="Photo 1"></div>
+                    <div class="slide"><img src="photos/photo1.jpg" alt="Photo 2"></div>
+                    <div class="slide"><img src="photos/photo13.jpg" alt="Photo 3"></div>
+                    <div class="slide"><img src="photos/photo4.jpg" alt="Photo 4"></div>
+
                     <div class="slide">
                         <div class="slide-placeholder">
                             <span>🌅</span>
@@ -792,11 +790,11 @@
                     <p>Click to view full gallery</p>
                 </div>
             </div>
-            
-            <div class="photo-settings">
-                <input type="text" id="driveLink" placeholder="Paste your Google Drive folder link here..." class="drive-input" style="width: 400px; display: block; margin: 1rem auto;">
-                <button onclick="connectDrive()" class="drive-input">Connect Google Drive</button>
+            <div class="photo-comment" style="text-align: center; margin-top: 1rem;">
+                <p>More photographs can be found here! 
+                    <a href="https://drive.google.com/drive/folders/1ew-9WESyfjAvgltXoD4y4JnIkgtyQ_xj" target="_blank">Click here to view them on Google Drive</a>.</p>
             </div>
+
             
             <div style="text-align: center;">
                 <a href="#" class="gallery-link" onclick="openGallery(); return false;">View Full Gallery</a>
@@ -810,31 +808,23 @@
             <button class="gallery-close" onclick="closeGallery()">×</button>
             <h2 style="color: white; text-align: center; margin-bottom: 2rem;">Photography Gallery</h2>
             <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">📸</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🌅</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🏛️</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🔬</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🎨</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🌃</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">🌿</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-item-placeholder">⚡</div>
-                </div>
+                <div class="gallery-item"><img src="photos/photo1.jpg" alt="Photo 1"></div>
+                <div class="gallery-item"><img src="photos/photo2.jpg" alt="Photo 2"></div>
+                <div class="gallery-item"><img src="photos/photo3.jpg" alt="Photo 3"></div>
+                <div class="gallery-item"><img src="photos/photo4.jpg" alt="Photo 4"></div>
+                <div class="gallery-item"><img src="photos/photo5.jpg" alt="Photo 5"></div>
+                <div class="gallery-item"><img src="photos/photo6.jpg" alt="Photo 6"></div>
+                <div class="gallery-item"><img src="photos/photo7.jpg" alt="Photo 7"></div>
+                <div class="gallery-item"><img src="photos/photo8.jpg" alt="Photo 8"></div>
+                <div class="gallery-item"><img src="photos/photo9.jpg" alt="Photo 9"></div>
+                <div class="gallery-item"><img src="photos/photo10.jpg" alt="Photo 10"></div>
+                <div class="gallery-item"><img src="photos/photo11.jpg" alt="Photo 11"></div>
+                <div class="gallery-item"><img src="photos/photo12.jpg" alt="Photo 12"></div>
+                <div class="gallery-item"><img src="photos/photo13.jpg" alt="Photo 13"></div>
+                <div class="gallery-item"><img src="photos/photo14.jpg" alt="Photo 14"></div>
+                <div class="gallery-item"><img src="photos/photo15.jpg" alt="Photo 15"></div>
             </div>
+
         </div>
     </div>
 
